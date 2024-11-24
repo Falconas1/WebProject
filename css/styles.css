@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Bahnschrift;
+}
+
+.wrapper {
+    background-color: #e8e8e8;
+}
+
+.page {
+    background-color: white;
+    margin: 70px auto;
+    height: 700px;
+    width: 700px;
+    border-radius: 10px;
+}
+
+nav {
+    height: 70px;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 10px #d0d0d0;
+    background-color: white;
+}
+
+.nav-item {
+    display: inline-block;
+    padding: 0 10px;
+    float: left;
+}
+
+.nav-item:hover {
+    background-color: #f5f5f5;
+}
+
+.nav-item:active {
+    box-shadow:inset 0px 0px 0px 2px #9d9d9d;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+
+.nav-item a{
+    display: inline-block;
+    line-height: 70px;
+}
+
+.nav-item a{
+    color: rgb(0, 0, 0);
+}
+
+.nav-item a:hover{
+    color: rgb(47, 47, 47);
+}
+
+.nav-item a:active{
+    color: rgb(47, 47, 47);
+}
+
+#fr {
+    float: right;
+}
+
+.main-nav {
+    margin: 0 150px;
+}
+
+footer {
+    height: 70px;
+    line-height: 70px;
+    background-color: #282829;
+}
+
+.foot {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.foot a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
+}
