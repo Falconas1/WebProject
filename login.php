@@ -15,17 +15,28 @@
     <nav>
         <div class="main-nav"><ul class="navi">
             <li id="name" class="nav-item">
-                <a href="index.php" class="nav-link">Toster</a>
+                <a href="index" class="nav-link">Toster</a>
             </li>
             <li id="fr" class="nav-item">
-                <a href="login.php" class="nav-link">Profile</a>
+                <a href="login" class="nav-link">Profile</a>
             </li>
         </ul></div>
     </nav>
     <div class="page">
         <h1>Toster</h1>
+        <?php
+            session_start(["use_strict_mode" => true]);
+            if (isset($_SESSION['username'])) {
+                ?>
+            <h3 class='session_message' >Вы вошли под именем <?=$_SESSION['username']?></h3>
+            <?php echo '<img src="' . '/users/' . $_SESSION['username'] . '/avatar.jpg' . '" alt="Avatar" width="150" height="150">'; ?>
+            <h3 class='session_message'><a class='session_message' href="auth?logout=1">Выйти</a></h3>
+        <?php }
+            else {
+            ?>
+
         <h3>Enter your login credentials</h3>
-        <form name="login" method="POST" action="loginform.php" enctype="multipart/form-data" autocomplete="on">
+        <form name="login" method="POST" action="auth.php" enctype="multipart/form-data" autocomplete="on">
             <label for="login">
                 Login:
             </label>
@@ -43,13 +54,15 @@
                     Submit
                 </button>
             </div>
-        </form>
 
-        <p>Not registered?
-            <a href="signup.php">
-                Create an account
-            </a>
-        </p>
+            <div class="qon">
+                Not registered? <a href="signup">Create an account</a>
+            </div>
+        </form>
+        <?php }
+        echo ("<p class='session_message'>".$_SESSION['message']."</p>");
+        unset($_SESSION['message']);
+        ?>
     </div>
     <footer>
         <div class="foot">

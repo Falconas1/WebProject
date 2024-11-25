@@ -20,7 +20,7 @@
                 <a href="" class="nav-link">New Post</a>
             </li>
             <li id="fr" class="nav-item">
-                <a href="login.php" class="nav-link">Profile</a>
+                <a href="login" class="nav-link">Profile</a>
             </li>
             </ul></div>
         </nav>
