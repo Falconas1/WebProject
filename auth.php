@@ -1,25 +1,24 @@
 <?php
 session_start(["use_strict_mode" => true]);
+require('dbconnect.php');
 unset($_SESSION['message']);
 if (isset($_POST['login'])) {
     setcookie("login", $_POST['login'], time()+60);
-    if ($_POST['login'] == 'Falcona'){
-        if ($_POST['password'] == 'qwerty123') {
+    $result = $conn->query("SELECT * FROM users WHERE login = '".$_POST['login']."'");
+    if ($row = $result->fetch()) {
+        if (MD5($_POST["password"]) == $row['password']) {
             $_SESSION['username'] = $_POST['login'];
-            header('Location: login.php');
-            die;
         }
         else {
             $_SESSION['message'] = 'Вы ввели неправильный пароль!';
-            header('Location: login.php');
-            die;
+//            $_SESSION['message'] = MD5($_POST["password"]);
         }
     }
     else {
         $_SESSION['message'] = 'Вы ввели неправильный логин!';
-        header('Location: login.php');
-        die;
     }
+    header('Location: login.php');
+    die;
 }
 if ($_GET['logout'] == 1) {
     session_unset();

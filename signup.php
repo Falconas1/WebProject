@@ -26,11 +26,11 @@
     <h1>Toster</h1>
     <h3>Enter your login credentials</h3>
     <form name="signup" method="POST" action="signupform.php" enctype="multipart/form-data" autocomplete="on">
-      <label for="username">
-        Username:
+      <label for="email">
+        Email:
       </label>
-      <input type="text" id="username" name="username"
-             placeholder="Enter your Username" required value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>">
+      <input type="text" id="email" name="email"
+             placeholder="Enter your Email" required value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>">
 
       <label for="login">
         Login:
