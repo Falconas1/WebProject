@@ -15,22 +15,22 @@
     <nav>
         <div class="main-nav"><ul class="navi">
             <li id="name" class="nav-item">
-                <a href="index.html" class="nav-link">Toster</a>
+                <a href="index.php" class="nav-link">Toster</a>
             </li>
             <li id="fr" class="nav-item">
-                <a href="login.html" class="nav-link">Profile</a>
+                <a href="login.php" class="nav-link">Profile</a>
             </li>
         </ul></div>
     </nav>
     <div class="page">
         <h1>Toster</h1>
         <h3>Enter your login credentials</h3>
-        <form action="">
-            <label for="first">
-                Username:
+        <form name="login" method="POST" action="loginform.php" enctype="multipart/form-data" autocomplete="on">
+            <label for="login">
+                Login:
             </label>
-            <input type="text" id="first" name="first"
-                   placeholder="Enter your Username" required>
+            <input type="text" id="login" name="login"
+                   placeholder="Enter your Login" required value="<?php echo isset($_COOKIE['login']) ? $_COOKIE['login'] : ''; ?>">
 
             <label for="password">
                 Password:
@@ -46,7 +46,7 @@
         </form>
 
         <p>Not registered?
-            <a href="#">
+            <a href="signup.php">
                 Create an account
             </a>
         </p>

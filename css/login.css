@@ -8,6 +8,45 @@
     margin-bottom: 150px;
 }
 
+#signup {
+    height: 900px;
+}
+
+input[type=radio] {
+    display: unset;
+    width: fit-content;
+    margin-right: 13px;
+    margin-top: 10px;
+}
+
+.radio{
+    text-align: left;
+}
+
+select {
+    font-size: 16px;
+}
+
+.select {
+    margin-top: 8px;
+    text-align: left;
+}
+
+input[type=checkbox] {
+    display: unset;
+    width: fit-content;
+    margin-right: 13px;
+}
+
+.checkbox{
+    text-align: left;
+    margin-top: 0;
+}
+
+#avatar {
+    cursor: pointer;
+}
+
 h1 {
     color: #4CAF50;
     font-size: 80px;
@@ -49,8 +88,8 @@ input {
 button {
     padding: 15px;
     border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border: none;
     color: white;
     cursor: pointer;
