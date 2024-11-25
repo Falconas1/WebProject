@@ -1,0 +1,95 @@
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 600px;
+    margin-bottom: 150px;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 80px;
+    font-weight: 600;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+form {
+    padding-top: 20px;
+}
+
+.page a {
+    text-decoration: none;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+
+input {
+    display: block;
+    width: 300px;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4CAF50;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #439a47;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-height: 650px) {
+    .page {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (min-height: 850px) {
+    .page {
+        margin-bottom: 150px;
+    }
+}
+
+@media screen and (min-height: 900px) {
+    .page {
+        margin-bottom: 300px;
+    }
+}
+
+@media screen and (min-height: 1100px) {
+    .page {
+        margin-bottom: 500px;
+    }
+}
