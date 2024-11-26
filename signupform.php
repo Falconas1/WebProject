@@ -1,8 +1,8 @@
 <?php
 if (isset($_POST)) {
-    setcookie("username", $_POST['username'], time()+120);
+    setcookie("email", $_POST['email'], time()+120);
     setcookie("login", $_POST['login'], time()+120);
-    print("<br>Имя: " . $_POST['username']);
+    print("<br>Mail: " . $_POST['email']);
     print("<br>Логин: " . $_POST['login']);
     print("<br>Пароль: " . $_POST['password']);
     print("<br>Статус: " . $_POST['status']);
@@ -26,4 +26,3 @@ if (isset($_POST)) {
         echo '<br><img src="' . $b_path . '" alt="Avatar" width="400" height="400">';
     }
 }
-

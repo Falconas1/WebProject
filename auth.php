@@ -1,4 +1,5 @@
 <?php
+global $conn;
 session_start(["use_strict_mode" => true]);
 require('dbconnect.php');
 unset($_SESSION['message']);

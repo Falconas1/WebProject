@@ -101,6 +101,63 @@ p {
     font-size: 18px;
 }
 
+.new_post h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.new_post h2 {
+    padding-top: 30px;
+    font-weight: 500;
+    font-size: 80px;
+}
+
+.new_post #text {
+    height: 100px;
+}
+
+.new_post label {
+    font-size: 24px;
+}
+
+.new_post #topic {
+    width: 250px;
+}
+
+.new_post input[type=file] {
+    width: 100%;
+    cursor: pointer;
+}
+
+.new_post input, .new_post textarea {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.new_post button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4CAF50;
+    width: 100%;
+    font-size: 16px;
+}
+
+.new_post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 @media screen and (min-width: 1000px) {
     p {
         font-size: 22px;

@@ -12,16 +12,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <nav>
-    <div class="main-nav"><ul class="navi">
-      <li id="name" class="nav-item">
-        <a href="index" class="nav-link">Toster</a>
-      </li>
-      <li id="fr" class="nav-item">
-        <a href="login" class="nav-link">Profile</a>
-      </li>
-    </ul></div>
-  </nav>
+  <?php include("nav.php") ?>
   <div id="signup" class="page">
     <h1>Toster</h1>
     <h3>Enter your login credentials</h3>
@@ -30,7 +21,7 @@
         Email:
       </label>
       <input type="text" id="email" name="email"
-             placeholder="Enter your Email" required value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>">
+             placeholder="Enter your Email" required value="<?php echo isset($_COOKIE['email']) ? $_COOKIE['email'] : ''; ?>">
 
       <label for="login">
         Login:
@@ -83,14 +74,13 @@
       <div class="al_acc">
           Уже зарегистрированы? <a href="login">Войдите</a>
       </div>
-
     </form>
+      <?php
+      echo ("<p class='session_message'>".$_SESSION['message']."</p>");
+        unset($_SESSION['message']);
+        ?>
   </div>
-  <footer>
-    <div class="foot">
-      <a href="">+7 (9000) 000 - 000</a>
-    </div>
-  </footer>
+    <?php include("footer.php") ?>
 </div>
 </body>
 </html>
