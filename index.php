@@ -13,10 +13,17 @@
     <div class="wrapper">
         <?php include("nav.php") ?>
         <div class="page">
-            <?php if ($_GET['page'] == 'newpost') {
-                include "newpost.php";
-            } else {
+            <?php if ($_GET['page'] == '') {
                 include "main.php";
+            } else {
+                switch ($_GET['page']) {
+                    case 'newpost':
+                        include "newpost.php";
+                        break;
+                    case 'test':
+                        include "test.php";
+                        break;
+                }
             }
             ?>
         </div>

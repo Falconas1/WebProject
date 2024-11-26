@@ -1,28 +1,57 @@
 <?php
 if (isset($_POST)) {
-    setcookie("email", $_POST['email'], time()+120);
-    setcookie("login", $_POST['login'], time()+120);
+    require('dbcon.php');
+    unset($_SESSION['message']);
+    setcookie("email", $_POST['email'], time()+60);
+    setcookie("login", $_POST['login'], time()+60);
     print("<br>Mail: " . $_POST['email']);
     print("<br>Логин: " . $_POST['login']);
     print("<br>Пароль: " . $_POST['password']);
-    print("<br>Статус: " . $_POST['status']);
-    print("<br>Чекбокс: " . $_POST['confirm']);
-    print("<br>Регион: " . $_POST['region']);
-    if (isset($_FILES['avatar'])) {
-        $file = $_FILES['avatar'];
-        print("<br>Загружен файл с именем " . $file['name'] . " и размером " . $file['size'] . " байт");
-        $current_path = $_FILES['avatar']['tmp_name'];
-        $filename = $_FILES['avatar']['name'];
-        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    //Проверка на наличие с такими же данными
+    $result = mysqli_query($db, "SELECT * FROM users WHERE login='" . $_POST['login'] . "';");
+    if (mysqli_num_rows($result) > 0) {
+        header('Location: signup');
+        die;
+    }
+
+    $result = mysqli_query($db, "SELECT * FROM users WHERE email='" . $_POST['email'] . "';");
+    if (mysqli_num_rows($result) > 0) {
+        header('Location: signup');
+        die;
+    }
+
+    if ($_FILES['avatar']["name"]!='') {
+
+        $filename = $_FILES["avatar"]["name"];
+        $tempname = $_FILES["avatar"]["tmp_name"];
         $dir = dirname(__FILE__) . '/users/' . $_POST['login'];
         $permissions = 0777;
+
         if (!file_exists($dir)) {
             mkdir($dir, $permissions, true);
         }
-        $new_filename = 'avatar.' . $extension;
-        $new_path = $dir . '/' . $new_filename;
-        move_uploaded_file($current_path, $new_path);
-        $b_path = '/users/' . $_POST['login'] . '/' . $new_filename;
-        echo '<br><img src="' . $b_path . '" alt="Avatar" width="400" height="400">';
+
+        $folder = $dir . '/' . $filename;
+        $sqldir = 'users/' . $_POST['login'] . '/' . $filename;
+
+        if (move_uploaded_file($tempname, $folder)) {
+            $sql = "INSERT INTO image (filename) VALUES ('$sqldir')";
+            mysqli_query($db, $sql);
+            $imageid = mysqli_insert_id($db);
+        }
+    } else {
+            $imageid = '2';
     }
+
+    $sql = "INSERT INTO `users` (`id`, `login`, `email`, `password`, `Avatar`) VALUES (NULL, '".$_POST['login']."', '".$_POST['email']."', '".MD5($_POST["password"])."', '".$imageid."');";
+    mysqli_query($db, $sql);
+
+    $_SESSION['message'] = 'Вы успешно зарегистрировались!';
+    header('Location: login');
+    die;
+
 }
+
+
+

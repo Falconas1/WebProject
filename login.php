@@ -18,36 +18,49 @@
         <?php
             session_start(["use_strict_mode" => true]);
             if (isset($_SESSION['username'])) {
+                require('dbcon.php');
                 ?>
             <h3 class='session_message' >Вы вошли под именем <?=$_SESSION['username']?></h3>
-            <?php echo '<img src="' . '/users/' . $_SESSION['username'] . '/avatar.jpg' . '" alt="Avatar" width="150" height="150">'; ?>
+            <?php
+                $userid = mysqli_query($db,"SELECT Avatar FROM users WHERE login='".$_SESSION['username']."';");
+                if(mysqli_num_rows($userid) > 0 ){
+                    $userrow = mysqli_fetch_assoc($userid);
+                    $picid =  $userrow['Avatar'];
+                }
+                $picture = mysqli_query($db,"SELECT FileName FROM image WHERE ImageID='".$picid."';");
+                if(mysqli_num_rows($picture) > 0 ){
+                    $userrow = mysqli_fetch_assoc($picture);
+                    $filename =  $userrow['FileName'];
+                }
+                echo '<img src="/'.$filename.'" alt="Avatar" width="150" height="150">';
+            ?>
             <h3 class='session_message'><a class='session_message' href="auth?logout=1">Выйти</a></h3>
         <?php }
             else {
             ?>
 
-        <h3>Enter your login credentials</h3>
+        <h3>Введите данные для входа</h3>
         <form name="login" method="POST" action="auth.php" enctype="multipart/form-data" autocomplete="on">
             <label for="login">
-                Login:
+                Логин:
             </label>
             <input type="text" id="login" name="login"
-                   placeholder="Enter your Login" required value="<?php echo isset($_COOKIE['login']) ? $_COOKIE['login'] : ''; ?>">
+                   placeholder="Введите логин" required value="<?php echo isset($_COOKIE['login']) ? $_COOKIE['login'] : ''; ?>">
 
             <label for="password">
-                Password:
+                Пароль:
             </label>
             <input type="password" id="password" name="password"
-                   placeholder="Enter your Password" required>
+                   placeholder="Введите пароль" required>
 
             <div class="wrap">
                 <button type="submit">
-                    Submit
+                    Отправить
                 </button>
             </div>
 
             <div class="qon">
-                Not registered? <a href="signup">Create an account</a>
+                Еще не зарегистрированы? <a href="signup">Создайте аккаунт</a>
             </div>
         </form>
         <?php }

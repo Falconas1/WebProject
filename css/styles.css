@@ -15,11 +15,130 @@
     height: fit-content;
     width: 85%;
     border-radius: 10px;
-    padding: 0 20px 30px;
+    padding: 0 20px 50px;
 }
 
 input {
     display: block;
+}
+
+.main {
+    text-align: left;
+}
+
+.main h1 {
+    padding-top: 20px;
+    margin-bottom: 40px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.main h2, .main h3, .main p{
+    padding: 8px;
+    text-align: left;
+}
+
+.main .title, .main h3 {
+    box-sizing: border-box;
+    border-bottom: 2px solid #c2c2c2;
+}
+
+.main h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.main h3 {
+    font-size: 25px;
+    font-weight: 400;
+    /*margin-bottom: 5px;*/
+}
+
+.main p {
+    border-bottom: unset;
+    font-weight: 300;
+}
+
+.main .post {
+    box-sizing: border-box;
+    border: 2px solid #c2c2c2;
+    border-radius: 8px;
+}
+
+.main .postimg {
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+}
+
+.main .title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment a img {
+    margin: 0;
+    opacity: 0.75;
+    border-style: unset;
+    max-height: 25px;
+    max-width: 25px;
+    margin: auto;
+    z-index: 1;
+    padding-left: 3px;
+}
+
+.comment a p {
+    font-weight: 250;
+    margin: auto;
+    text-decoration: unset;
+    color: black;
+    padding-right: 2px;
+}
+
+.comment a {
+    text-decoration: unset;
+}
+
+.comment a:hover {
+    text-decoration: unset;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 10%;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment a{
+    padding-right: 3px;
+    display: flex;
+}
+
+.comment .comin{
+    margin: auto;
+    padding-right: 7px;
+}
+
+.main img {
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    max-width: 30%;
+    max-height: 30%;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgba(40, 40, 41, 0.5);
+}
+
+.post h2 img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin: 0;
+}
+
+.main .post {
+    margin-bottom: 15px;
 }
 
 nav {
@@ -28,6 +147,7 @@ nav {
     top: 0;
     box-shadow: 0 0 10px #d0d0d0;
     background-color: white;
+    z-index: 2;
 }
 
 .nav-item {
@@ -101,9 +221,14 @@ p {
     font-size: 18px;
 }
 
+.session_message {
+    margin-top: 15px;
+    font-weight: 400;
+}
+
 .new_post h3 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     font-weight: 400;
 }
 
@@ -130,7 +255,7 @@ p {
     cursor: pointer;
 }
 
-.new_post input, .new_post textarea {
+.new_post input, .new_post textarea, .new_post select {
     margin-top: 5px;
     margin-bottom: 15px;
     padding: 10px;

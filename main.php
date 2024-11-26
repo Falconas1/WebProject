@@ -1,6 +1,43 @@
-<h2>Hello!</h2><p>Lorem ipsum odor amet, consectetuer adipiscing elit. Erat per maximus sagittis varius suscipit luctus primis. Etiam commodo nulla sollicitudin duis natoque varius duis. Eu consequat quam aptent ut adipiscing sollicitudin. Primis scelerisque tincidunt elementum faucibus; magna tellus. Potenti conubia platea euismod tortor diam ligula leo enim. Lobortis iaculis pellentesque per rhoncus quis nisi. Tellus dictum at etiam nisi dapibus.
-    Nulla litora lectus posuere, sagittis vitae accumsan egestas habitant. Iaculis faucibus justo consectetur faucibus suscipit condimentum non. Sociosqu sem posuere in hac nullam class. Vel nec malesuada morbi nam adipiscing quisque leo. Litora arcu cras eget rhoncus libero commodo. Ultricies sem nec penatibus purus tincidunt mollis arcu potenti. Eu pretium feugiat lacinia mus fames et. Feugiat massa tincidunt taciti ante euismod.
-    Purus class dignissim nunc suscipit nibh etiam ac. Per magna justo turpis rutrum tempor dignissim accumsan. Efficitur mauris curae elit justo laoreet erat eleifend potenti phasellus. Dolor feugiat quis torquent turpis morbi eros purus litora. Justo natoque ornare risus sociosqu integer nunc. Class per sem nulla bibendum conubia auctor. Fusce erat malesuada molestie nibh neque ultrices mi pellentesque. Nisi dictum ornare senectus; vestibulum taciti habitasse.
-    Parturient nunc litora non consectetur faucibus finibus ultricies duis? Aenean netus quam inceptos malesuada fames ornare. Parturient dapibus mi pharetra vulputate neque odio nisl felis nibh. Commodo pellentesque purus inceptos ligula, elit malesuada congue pretium. Aliquet sodales interdum, curae lobortis condimentum nascetur curabitur senectus auctor. Velit sem in congue etiam ad himenaeos posuere quisque ac. Sapien taciti turpis proin taciti ex commodo. Cursus nisl pellentesque tempus convallis facilisis blandit hendrerit. Senectus ante efficitur integer etiam nec.
-    Arcu venenatis dignissim facilisi torquent odio cubilia. Blandit erat duis eget taciti consectetur, non senectus diam. Malesuada laoreet faucibus nisl potenti curae primis. Egestas nisl ligula donec molestie pharetra euismod molestie enim. Nascetur diam turpis arcu sem tempor congue ridiculus. Justo risus quam ipsum fermentum lacinia vitae nascetur proin. Aptent venenatis viverra mattis magnis praesent nisi aliquet. Egestas facilisis pulvinar integer conubia; egestas felis.
-</p>
+<?php
+require 'dbcon.php';
+$sql = 'SELECT * FROM `posts` ORDER BY PostID DESC';
+$result = mysqli_query($db, $sql);
+?>
+<div class="main">
+    <h1>Узнайте что-нибудь новое!</h1>
+    <?php
+    while($row = mysqli_fetch_array($result))
+    {
+        $user = mysqli_query($db,"SELECT login FROM users WHERE id='".$row['UserID']."';");
+        if(mysqli_num_rows($user) > 0 ){
+            $userrow = mysqli_fetch_assoc($user);
+            $login =  $userrow['login'];
+        }
+        $cat = mysqli_query($db,"SELECT Name FROM categories WHERE CategoryID='".$row['CategoryID']."';");
+        if(mysqli_num_rows($cat) > 0 ){
+            $catrow = mysqli_fetch_assoc($cat);
+            $category =  $catrow['Name'];
+        }
+
+        ?><div class="post"><?php
+        $com = mysqli_query($db,"SELECT * FROM comments WHERE PostID='".$row['PostID']."';");
+        $com_num = mysqli_num_rows($com);
+        if($com_num > 0 ){
+            echo '<div class="title"><h2>'.$login.' в категории: '.$category.'</h2><div class="comment"><div class="comin"><a href="post?id='.$row['PostID'].'"><p>'.$com_num.'</p><img src="/image/ico/com.png" alt=""></a></div></div></div>';
+        } else {
+            echo '<div class="title"><h2>'.$login.' в категории: '.$category.'</h2><div class="comment"><div class="comin"><a href="post?id='.$row['PostID'].'"><img src="/image/ico/com.png" alt=""></a></div></div></div>';
+        }
+        echo '<h3>'.$row['Title'].'</h3>';
+        echo '<p>'.$row['Content'].'</p>';
+        $pic = mysqli_query($db,"SELECT FileName FROM image WHERE ImageID='".$row['ImageID']."';");
+        if(mysqli_num_rows($pic) > 0 ){
+            $picrow = mysqli_fetch_assoc($pic);
+            $picture =  $picrow['FileName'];
+            ?><div class="postimg"><?php
+            echo '<img src="/'.$picture.'" alt="'.$row['ImageID'].'">';
+            ?></div><?php
+        }
+        ?></div><?php
+    }
+    ?>
+</div>

@@ -15,56 +15,34 @@
   <?php include("nav.php") ?>
   <div id="signup" class="page">
     <h1>Toster</h1>
-    <h3>Enter your login credentials</h3>
+    <h3>Введите данные для регистрации</h3>
     <form name="signup" method="POST" action="signupform.php" enctype="multipart/form-data" autocomplete="on">
       <label for="email">
-        Email:
+        Почта:
       </label>
       <input type="text" id="email" name="email"
-             placeholder="Enter your Email" required value="<?php echo isset($_COOKIE['email']) ? $_COOKIE['email'] : ''; ?>">
+             placeholder="Введите почту" required value="<?php echo isset($_COOKIE['email']) ? $_COOKIE['email'] : ''; ?>">
 
       <label for="login">
-        Login:
+        Логин:
       </label>
       <input type="text" id="login" name="login"
-             placeholder="Enter your Login" required value="<?php echo isset($_COOKIE['login']) ? $_COOKIE['login'] : ''; ?>">
+             placeholder="Введите логин" required value="<?php echo isset($_COOKIE['login']) ? $_COOKIE['login'] : ''; ?>">
 
       <label for="password">
-        Password:
+        Пароль:
       </label>
       <input type="password" id="password" name="password"
-             placeholder="Enter your Password" required>
+             placeholder="Введите пароль" required>
 
       <label>
-        Your status:
-      </label>
-      <div class="radio">
-        <input type="radio" name="status" value="student" checked>Студент<br>
-        <input type="radio" name="status" value="pupil">Школьник<br>
-        <input type="radio" name="status" value="worker">Работник<br>
-        <input type="radio" name="status" value="pensioner">Пенсионер<br>
-      </div>
-
-      <label>
-        Your region:
-      </label>
-      <div class="select">
-        <select id="select" name="region">
-          <option value="0">Москва</option>
-          <option value="1">Югра</option>
-          <option value="2">Тюменская обл.</option>
-          <option value="3">Другое</option>
-        </select>
-      </div>
-
-      <label>
-        Your profile picture:
+        Добавьте фотографию профиля:
       </label>
       <input type="file" id="avatar" name="avatar">
 
       <div class="wrap">
         <button type="submit">
-          Submit
+          Отправить
         </button>
       </div>
 
@@ -77,8 +55,8 @@
     </form>
       <?php
       echo ("<p class='session_message'>".$_SESSION['message']."</p>");
-        unset($_SESSION['message']);
-        ?>
+      unset($_SESSION['message']);
+      ?>
   </div>
     <?php include("footer.php") ?>
 </div>

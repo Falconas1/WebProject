@@ -1,0 +1,79 @@
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 80px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.comments h3 {
+    border: none;
+    font-size: 20px;
+    font-weight: 300;
+    border-top: 2px solid rgba(194, 194, 194, 0.55);
+}
+
+.comments h2 {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.main .comments {
+    box-sizing: border-box;
+    border: 2px solid rgba(194, 194, 194, 0.75);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.newcom h2 {
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+input {
+    display: block;
+    width: 300px;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.newcom textarea {
+    margin-top: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 40%;
+}
+
+.newcom button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 20%;
+    background-color: #4CAF50;
+    font-size: 14px;
+}
+
+.newcom button:hover {
+    background-color: #439a47;
+}
+
+.fline {
+    display: flex;
+    align-items: center;
+}
+
+.fline img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 3px solid #439a47;
+    margin: 7px;
+}
